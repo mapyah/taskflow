@@ -3,7 +3,7 @@ export default function Tooltip() {
  const [position, setPosition] = useState({ top: 0, left: 0 });
  const [useLayout, setUseLayout] = useState(false);
  const buttonRef = useRef<HTMLButtonElement>(null);
- // Version useEffect — flash visible
+ // Version useEffect flash visible
  useEffect(() => {
  if (useLayout) return;
  if (buttonRef.current) {
@@ -11,14 +11,14 @@ export default function Tooltip() {
  setPosition({ top: rect.bottom + 8, left: rect.left });
  }
  }, [useLayout]);
- // Version useLayoutEffect — pas de flash
+ // Version useLayoutEffect pas de flash
  useLayoutEffect(() => {
  if (!useLayout) return;
  if (buttonRef.current) {
  const rect = buttonRef.current.getBoundingClientRect();
  setPosition({ top: rect.bottom + 8, left: rect.left });
  }
- }, [useLayout]);
+}, [useLayout]);
  return (
  <div style={{ padding: '2rem' }}>
  <button onClick={() => {
